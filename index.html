@@ -12,22 +12,27 @@
         <label for="name">Имя:</label><br>
         <input type="text" id="name" name="name" required><br><br>
 
+        <!--
         <label for="email">Электронная почта:</label><br>
         <input type="email" id="email" name="email" required><br><br>
 
         <label for="message">Сообщение:</label><br>
         <textarea id="message" name="message" rows="4" required></textarea><br><br>
+        
+        пока просто скрыл эти кнопки, чтобы поменьше заполнять
+        -->
 
         <input type="submit" value="Оплатить">
     </form>
     <script>
-        const form = document.getElementById('article-form');
+        // const form = document.getElementById('article-form');
 
-        form.addEventListener('submit', saveArticle);
+        // form.addEventListener('submit', saveArticle);
 
-        function saveArticle(event) {
-            const myFormData = new FormData(form);
-        };
+        // function saveArticle(event) {
+        //     const myFormData = new FormData(form);
+        // };
+        // пока убрал сохранение данных в переменную.
 
         this.pay = function () {
             var widget = new cp.CloudPayments();
