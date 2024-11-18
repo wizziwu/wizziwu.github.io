@@ -1,6 +1,8 @@
 const email = document.getElementById("email");
 const phone = document.getElementById("phone");
 const firstName = document.getElementById("firstName");
+const patronymic = document.getElementById("patronymic");
+const surname = document.getElementById("surname");
 const comment = document.getElementById("comment");
 
 function once_pay () {
@@ -16,7 +18,13 @@ function once_pay () {
             email: email.value, //email плательщика (необязательно)
             skin: "mini", //дизайн виджета (необязательно)
             data: {
-                myProp: 'myProp value'
+                myProp: 'myProp value',
+                email: email.value,
+                phone: phone.value,
+                firstName: firstName.value,
+                middleName: patronymic.value,
+                lastName: surname.value,
+                comment: comment.value
             },
             payer: { 
                 firstName: firstName.value,
@@ -52,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
   button.addEventListener('click', isChecked);
 });
 
+
+
+
 function recurrent_pay () {
   var widget = new cp.CloudPayments();
   var receipt = {
@@ -79,7 +90,14 @@ function recurrent_pay () {
     }
 };
 
-  var data = {};
+  var data = {
+    email: email.value,
+    phone: phone.value,
+    firstName: firstName.value,
+    middleName: patronymic.value,
+    lastName: surname.value,
+    comment: comment.value
+  };
   data.CloudPayments = {
   CustomerReceipt: receipt, //чек для первого платежа
   recurrent: {
@@ -92,11 +110,12 @@ function recurrent_pay () {
   widget.charge({ // options
   publicId: 'pk_3523a43ecc0884c0a8f70cfd3a584', //id из личного кабинета
   description: comment.value, //назначение
-  amount: 1, //сумма
+  amount: 2, //сумма
   currency: 'RUB', //валюта
   invoiceId: '999', //номер заказа  (необязательно)
   accountId: email.value, //идентификатор плательщика (обязательно для создания подписки)
-  data: data
+  data: data,
+  requireEmail: true
   },
   function (options) { // success
   //действие при успешной оплате
@@ -114,4 +133,4 @@ function isChecked() {
     else{
         once_pay();
     }
-}
+};
