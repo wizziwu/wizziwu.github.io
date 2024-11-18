@@ -7,11 +7,11 @@ function once_pay () {
   var widget = new cp.CloudPayments();
     widget.pay('auth', // или 'charge'
         { //options
-            publicId: 'test_api_00000000000000000000002', //id из личного кабинета
+            publicId: 'pk_3523a43ecc0884c0a8f70cfd3a584', //id из личного кабинета
             description: comment.value, //назначение
-            amount: 100, //сумма
+            amount: 1, //сумма
             currency: 'RUB', //валюта
-            accountId: 'user@example.com', //идентификатор плательщика (необязательно)
+            accountId: email.value, //идентификатор плательщика (необязательно)
             invoiceId: '1234567', //номер заказа  (необязательно)
             email: email.value, //email плательщика (необязательно)
             skin: "mini", //дизайн виджета (необязательно)
@@ -90,9 +90,9 @@ function recurrent_pay () {
   }; //создание ежемесячной подписки
 
   widget.charge({ // options
-  publicId: 'test_api_00000000000000000000001', //id из личного кабинета
+  publicId: 'pk_3523a43ecc0884c0a8f70cfd3a584', //id из личного кабинета
   description: comment.value, //назначение
-  amount: 1000, //сумма
+  amount: 1, //сумма
   currency: 'RUB', //валюта
   invoiceId: '999', //номер заказа  (необязательно)
   accountId: email.value, //идентификатор плательщика (обязательно для создания подписки)
