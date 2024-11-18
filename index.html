@@ -15,11 +15,19 @@
 
         <label for="phone">Телефон:</label><br>
         <input type="number" id="phone" name="phone" ><br><br>
+        
+        <label for="surname">Фамилия:</label><br>
+        <input type="text" id="surname" name="surname" required><br><br>
 
-        <label for="firstName">ФИО:</label><br>
+        <label for="firstName">Имя:</label><br>
         <input type="text" id="firstName" name="firstName" required><br><br>
 
-        <label for="comment">Комментарий:</label><br>
+        <label for="patronymic">Отчество:</label><br>
+        <input type="text" id="patronymic" name="patronymic" required><br><br>
+
+
+
+        <label for="comment">Комментарий (назначение платежа):</label><br>
         <input type="text" id="comment" name="comment" required><br><br>
         
         <div class="form-group"> <!-- подключаю чек-бокс в виде формы, чтобы не целиться в сам чекбокс -->
@@ -29,7 +37,6 @@
             </label><br><br>
         </div>
         <button type="button" id="pay">Оплатить</button>
-
 
     </form>
     <script></script>
