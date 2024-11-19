@@ -1,11 +1,11 @@
-const email = document.getElementById("email");
-const phone = document.getElementById("phone");
-const firstName = document.getElementById("firstName");
-const patronymic = document.getElementById("patronymic");
-const surname = document.getElementById("surname");
-const comment = document.getElementById("comment");
+const email = document.getElementById("email"),
+    phone = document.getElementById("phone"),
+    firstName = document.getElementById("firstName"),
+    patronymic = document.getElementById("patronymic"),
+    surname = document.getElementById("surname"),
+    comment = document.getElementById("comment");
 
-function once_pay () {
+function oncePay () {
   var widget = new cp.CloudPayments();
     widget.pay('auth', // или 'charge'
         { //options
@@ -28,8 +28,8 @@ function once_pay () {
             },
             payer: { 
                 firstName: firstName.value,
-                lastName: 'Тестов',
-                middleName: 'Тестович',
+                lastName: surname.value,
+                middleName: patronymic.value,
                 birth: '1955-02-24',
                 address: 'тестовый проезд дом тест',
                 street: 'Lenina',
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function recurrent_pay () {
+function recurrentPay () {
   var widget = new cp.CloudPayments();
   var receipt = {
     Items: [//товарные позиции
@@ -128,9 +128,9 @@ function recurrent_pay () {
 
 function isChecked() {
     if(document.getElementById("reccurentPayment").checked){
-        recurrent_pay();
+        recurrentPay();
     }
     else{
-        once_pay();
+        oncePay();
     }
 };
