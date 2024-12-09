@@ -3,7 +3,8 @@ const email = document.getElementById("email"),
     firstName = document.getElementById("firstName"),
     patronymic = document.getElementById("patronymic"),
     surname = document.getElementById("surname"),
-    comment = document.getElementById("comment");
+    comment = document.getElementById("comment"),
+    someData = document.getElementById("some_data");
 
 function oncePay () {
   var widget = new cp.CloudPayments();
@@ -24,7 +25,8 @@ function oncePay () {
                 firstName: firstName.value,
                 middleName: patronymic.value,
                 lastName: surname.value,
-                comment: comment.value
+                comment: comment.value,
+                someData: someData.value
             },
             payer: { 
                 firstName: firstName.value,
@@ -96,7 +98,8 @@ function recurrentPay () {
     firstName: firstName.value,
     middleName: patronymic.value,
     lastName: surname.value,
-    comment: comment.value
+    comment: comment.value,
+    someData: someData.value
   };
   data.CloudPayments = {
   CustomerReceipt: receipt, //чек для первого платежа
@@ -110,7 +113,7 @@ function recurrentPay () {
   widget.charge({ // options
   publicId: 'pk_3523a43ecc0884c0a8f70cfd3a584', //id из личного кабинета
   description: comment.value, //назначение
-  amount: 2, //сумма
+  amount: 3, //сумма
   currency: 'RUB', //валюта
   invoiceId: '999', //номер заказа  (необязательно)
   accountId: email.value, //идентификатор плательщика (обязательно для создания подписки)
