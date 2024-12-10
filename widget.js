@@ -104,7 +104,7 @@ function recurrentPay () {
   data.CloudPayments = {
   CustomerReceipt: receipt, //чек для первого платежа
   recurrent: {
-  interval: 'Month',
+  interval: 'Day',
   period: 1, 
   customerReceipt: receipt //чек для регулярных платежей
   }
@@ -113,7 +113,7 @@ function recurrentPay () {
   widget.charge({ // options
   publicId: 'pk_3523a43ecc0884c0a8f70cfd3a584', //id из личного кабинета
   description: comment.value, //назначение
-  amount: 3, //сумма
+  amount: 333, //сумма
   currency: 'RUB', //валюта
   invoiceId: '999', //номер заказа  (необязательно)
   accountId: email.value, //идентификатор плательщика (обязательно для создания подписки)
