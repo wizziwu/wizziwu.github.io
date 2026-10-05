@@ -3,45 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма сбора данных с виджетом CP</title>
+    <title>Благотворительный фонд — Поддержка</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключение виджета CloudPayments -->
     <script src="https://widget.cloudpayments.ru/bundles/cloudpayments.js"></script>
-    <script src="/widget.js" defer></script> <!-- Подключение JS-файла -->
 </head>
 <body>
-    <h1>Введи значения в поля и нажми кнопку Оплатить</h1>
-    <form id="dataForm">
-        <label for="email">Электронная почта:</label><br>
-        <input type="email" id="email" name="email" placeholder="example@example.ru" required><br><br>
+    <div class="container">
+        <header class="header">
+            <h1>Поддержите наш фонд</h1>
+            <p class="subtitle">Ваша помощь меняет жизни</p>
+        </header>
 
-        <label for="phone">Телефон:</label><br>
-        <input type="number" id="phone" name="phone" placeholder="89997772211"><br><br>
-        
-        <label for="surname">Фамилия:</label><br>
-        <input type="text" id="surname" name="surname" placeholder="Иванов" required><br><br>
+        <form id="donationForm" class="donation-form">
+            <!-- Сумма пожертвования -->
+            <div class="form-group">
+                <label for="amount">Сумма пожертвования (₽)</label>
+                <input type="number" id="amount" name="amount" min="1" step="1" value="500" required>
+            </div>
 
-        <label for="firstName">Имя:</label><br>
-        <input type="text" id="firstName" name="firstName" placeholder="Иван" required><br><br>
+            <!-- Выбор рекуррентности -->
+            <div class="form-group">
+                <label>Периодичность платежа</label>
+                <div class="recurrence-selector">
+                    <label class="radio-label">
+                        <input type="radio" name="recurrence" value="one-time" checked>
+                        <span class="radio-custom"></span>
+                        Разовый платёж
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="recurrence" value="monthly">
+                        <span class="radio-custom"></span>
+                        Ежемесячно
+                    </label>
+                </div>
+            </div>
 
-        <label for="patronymic">Отчество:</label><br>
-        <input type="text" id="patronymic" name="patronymic" placeholder="Иванович" required><br><br>
+            <!-- ФИО -->
+            <div class="form-group">
+                <label for="fullName">ФИО</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Иванов Иван Иванович" required>
+            </div>
 
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+            </div>
 
+            <!-- Телефон -->
+            <div class="form-group">
+                <label for="phone">Номер телефона</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+            </div>
 
-        <label for="comment">Комментарий (назначение платежа):</label><br>
-        <input type="text" id="comment" name="comment" placeholder="Любой текст" required><br><br>
+            <!-- Комментарий -->
+            <div class="form-group">
+                <label for="comment">Комментарий</label>
+                <textarea id="comment" name="comment" rows="3" placeholder="Ваше сообщение (необязательно)"></textarea>
+            </div>
 
-        <label for="some_data">Передаю доп данные</label><br>
-        <input type="text" id="some_data" name="some_data" placeholder="Для data" required><br><br>
-        
-        <div class="form-group"> <!-- подключаю чек-бокс в виде формы, чтобы не целиться в сам чекбокс -->
-            <label>
-                <input type="checkbox" id = "reccurentPayment" name="reccurentPayment">
-                Сделать платеж ежемесячным
-            </label><br><br>
-        </div>
-        <button type="button" id="pay">Оплатить</button>
+            <!-- Чекбокс для подтверждения рекуррентности (дублирует селектор) -->
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="makeRecurrent">
+                    <span class="checkbox-custom"></span>
+                    Сделать платёж ежемесячным
+                </label>
+                <p class="checkbox-hint">При активации после успешного платежа будет создана подписка с ежемесячным списанием.</p>
+            </div>
 
-    </form>
-    <script></script>
+            <!-- Кнопки оплаты -->
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary" id="payButton">
+                    Оплатить
+                </button>
+                <button type="button" class="btn btn-secondary" id="quickPayButton">
+                    Оплатить в один клик
+                </button>
+            </div>
+        </form>
+
+        <div id="resultMessage" class="result-message"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
