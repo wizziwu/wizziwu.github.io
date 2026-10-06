@@ -2,7 +2,7 @@
 // КОНФИГУРАЦИЯ (замените на свои данные из ЛК CloudPayments)
 // ============================================================
 const CONFIG = {
-    publicId: 'test_api_00000000000000000000001', // Ваш Public ID из ЛК
+    publicId: 'pk_3523a43ecc0884c0a8f70cfd3a584', // Ваш Public ID из ЛК
     apiUrl: 'https://api.cloudpayments.ru',         // URL API (не используется в виджете напрямую)
     currency: 'RUB',
     description: 'Пожертвование в благотворительный фонд'
